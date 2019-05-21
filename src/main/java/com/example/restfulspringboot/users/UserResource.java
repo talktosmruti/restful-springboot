@@ -4,8 +4,11 @@ import java.net.URI;
 import java.util.List;
 
 import javax.validation.Valid;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,9 +32,12 @@ public class UserResource {
 	}
 	
 	@GetMapping("/{userId}")
-	public User getUserById(@PathVariable String userId) {
+	public Resource<User> getUserById(@PathVariable String userId) {
 		User user = this.userDao.getUserById(Integer.parseInt(userId));
-		return user;
+		
+		ControllerLinkBuilder link = ControllerLinkBuilder.linkTo(methodOn(this.getClass()).getAllusers());
+		Resource<User> resource = new Resource<User>(user, link.withRel("all-users"));
+		return resource;
 	}
 	
 	@PostMapping()
