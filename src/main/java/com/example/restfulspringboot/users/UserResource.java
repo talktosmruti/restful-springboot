@@ -1,7 +1,9 @@
-package com.example.restful.users;
+package com.example.restfulspringboot.users;
 
 import java.net.URI;
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,11 +30,12 @@ public class UserResource {
 	
 	@GetMapping("/{userId}")
 	public User getUserById(@PathVariable String userId) {
-		return this.userDao.getUserById(Integer.parseInt(userId));
+		User user = this.userDao.getUserById(Integer.parseInt(userId));
+		return user;
 	}
 	
 	@PostMapping()
-	public ResponseEntity<Object> saveUser(@RequestBody User user) {
+	public ResponseEntity<Object> saveUser(@Valid @RequestBody User user) {
 		User userCreated = this.userDao.createUser(user);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(userCreated.getId()).toUri();
 		

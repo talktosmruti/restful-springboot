@@ -1,13 +1,13 @@
-package com.example.restful;
+package com.example.restfulspringboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RestfulSpringApplication {
+public class RestfulSpringbootApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RestfulSpringApplication.class, args);
+		SpringApplication.run(RestfulSpringbootApplication.class, args);
 	}
 
 }

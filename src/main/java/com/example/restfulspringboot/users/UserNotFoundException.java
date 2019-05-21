@@ -1,4 +1,4 @@
-package com.example.restful.users;
+package com.example.restfulspringboot.users;
 
 public class UserNotFoundException extends RuntimeException {
 

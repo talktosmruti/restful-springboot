@@ -1,4 +1,4 @@
-package com.example.restful;
+package com.example.restfulspringboot.exceptions;
 
 import java.util.Date;
 
