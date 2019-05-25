@@ -5,12 +5,17 @@ import java.util.Date;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+import com.wordnik.swagger.annotations.ApiModel;
+import com.wordnik.swagger.annotations.ApiModelProperty;
+
+@ApiModel("Model which describes an user")
 public class User {
 	
 	private Integer id;
 	@Size(min=2, message = "Name should be of atleast 2 charaters")
 	private String name;
 	@Past
+	@ApiModelProperty(notes = "Describes the DOB")
 	private Date birthDate;
 	
 	

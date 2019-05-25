@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/users")
 public class UserResource {
@@ -32,6 +35,7 @@ public class UserResource {
 	}
 	
 	@GetMapping("/{userId}")
+	@ApiOperation(notes = "Returns details of a user by taking the id as input", value = "get user")
 	public Resource<User> getUserById(@PathVariable String userId) {
 		User user = this.userDao.getUserById(Integer.parseInt(userId));
 		
